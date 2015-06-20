@@ -13,6 +13,7 @@ from scrapylib.processors import default_input_processor, default_output_process
 class FosshackersItem(scrapy.Item):
     id_ = scrapy.Field()
     type_ = scrapy.Field()
+    file_urls = scrapy.Field()
 
 
 class FosshackersItemLoader(ItemLoader):
