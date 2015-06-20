@@ -9,6 +9,6 @@ import scrapy
 
 
 class FosshackersItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    id_ = scrapy.Field()
+    typex = scrapy.Field()
+
