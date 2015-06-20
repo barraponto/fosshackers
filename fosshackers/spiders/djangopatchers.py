@@ -12,4 +12,7 @@ class DjangopatchersSpider(scrapy.Spider):
     )
 
     def parse(self, response):
-        pass
+        # Get issue data from the main table
+        for issue in response.css('.tickets.listing tbody tr'):
+            yield {'id': issue.css('.id a::text').extract_first(),
+                   'type': issue.css('.type::text').extract_first().strip()}
