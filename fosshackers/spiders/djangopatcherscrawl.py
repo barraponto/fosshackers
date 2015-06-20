@@ -22,12 +22,7 @@ class DjangopatcherscrawlSpider(CrawlSpider):
     )
 
     def parse_issue(self, response):
-        return {'id': response.css('h2 > a::text').extract_first(),
-                'type': response.css('.trac-type a::text').extract_first()}
-
-    # def parse_item(self, response):
-    #     i = FosshackersItem()
-    #     #i['domain_id'] = response.xpath('//input[@id="sid"]/@value').extract()
-    #     #i['name'] = response.xpath('//div[@id="name"]').extract()
-    #     #i['description'] = response.xpath('//div[@id="description"]').extract()
-    #     return i
+        item = FosshackersItem()
+        item['id_'] = response.css('h2 > a::text').extract_first()
+        item['type_'] = response.css('.trac-type a::text').extract_first()
+        return item

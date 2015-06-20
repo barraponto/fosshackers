@@ -10,5 +10,5 @@ import scrapy
 
 class FosshackersItem(scrapy.Item):
     id_ = scrapy.Field()
-    typex = scrapy.Field()
+    type_ = scrapy.Field()
 
