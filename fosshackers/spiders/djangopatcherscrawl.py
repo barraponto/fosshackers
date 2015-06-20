@@ -2,7 +2,7 @@
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
 
-from fosshackers.items import FosshackersItem
+from fosshackers.items import FosshackersItemLoader
 
 
 class DjangopatcherscrawlSpider(CrawlSpider):
@@ -22,7 +22,7 @@ class DjangopatcherscrawlSpider(CrawlSpider):
     )
 
     def parse_issue(self, response):
-        item = FosshackersItem()
-        item['id_'] = response.css('h2 > a::text').extract_first()
-        item['type_'] = response.css('.trac-type a::text').extract_first()
-        return item
+        loader = FosshackersItemLoader(response=response)
+        loader.add_css('id_', 'h2 > a::text')
+        loader.add_css('type_', '.trac-type a::text')
+        return loader.load_item()
