@@ -10,6 +10,12 @@ from fosshackers.items import FosshackersItemLoader
 
 class DjangopatcherscrawlSpider(CrawlSpider):
     name = 'djangopatcherscrawl'
+    custom_settings = {
+        'ITEM_PIPELINES': {
+            'scrapy.pipelines.files.FilesPipeline': 1
+        },
+        'FILES_STORE': '/tmp/djangopatches/'
+    }
     allowed_domains = ['code.djangoproject.com',
                        'api.github.com']
     start_urls = [

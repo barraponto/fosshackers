@@ -14,6 +14,7 @@ class FosshackersItem(scrapy.Item):
     id_ = scrapy.Field()
     type_ = scrapy.Field()
     file_urls = scrapy.Field()
+    files = scrapy.Field()
 
 
 class FosshackersItemLoader(ItemLoader):
