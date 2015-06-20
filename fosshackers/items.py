@@ -7,7 +7,7 @@
 
 import scrapy
 from scrapy.loader import ItemLoader
-from scrapy.loader.processors import TakeFirst
+from scrapylib.processors import default_input_processor, default_output_processor
 
 
 class FosshackersItem(scrapy.Item):
@@ -17,4 +17,5 @@ class FosshackersItem(scrapy.Item):
 
 class FosshackersItemLoader(ItemLoader):
     default_item_class = FosshackersItem
-    default_output_processor = TakeFirst()
+    default_input_processor = default_input_processor
+    default_output_processor = default_output_processor
